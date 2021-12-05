@@ -1,3 +1,30 @@
 ###
+GET http://localhost:8000/api/products
+Content-Type: application/json
 
-http://localhost:8000/api/products
+
+###
+POST http://localhost:8000/api/products
+Content-Type: application/json
+
+{
+    "title": "title",
+    "image": "image"
+}
+
+###
+GET http://localhost:8000/api/products/1
+Content-Type: application/json
+
+###
+PUT http://localhost:8000/api/products/1
+Content-Type: application/json
+
+{
+    "title": "new title",
+    "image": "image"
+}
+
+###
+DELETE http://localhost:8000/api/products/1
+Content-Type: application/json
