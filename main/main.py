@@ -30,11 +30,9 @@ class Product(db.Model):
 @dataclass
 class ProductUser(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer)
-    product_id = db.Column(db.Integer)
+    user_id = db.Column('user_id', db.Integer)
+    product_id = db.Column('product_id', db.Integer)
     UniqueConstraint('user_id', 'product_id', name='user_product_unique')
-    # __table_args__ = (UniqueConstraint('user_id', 'product_id', name='user_product_unique'))
-
 
 @app.route('/api/products')
 def index():
@@ -43,10 +41,11 @@ def index():
 
 @app.route('/api/products/<int:id>/like', methods=['POST'])
 def like(id):
-    req = requests.get('http://0.0.0.0:8000/api/user')
+    req = requests.get('http://host.docker.internal:8000/api/user')
     json = req.json()
 
     try:
+        #TODO: if there is already one with this user id and product id throw error
         productUser = ProductUser(user_id=json['id'], product_id=id)
         db.session.add(productUser)
         db.session.commit()
