@@ -1,11 +1,20 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { FlatList, StyleSheet, Text, View } from "react-native";
 import { Image, ListItem } from "react-native-elements";
 
+import { getAllProductsAdmin } from "../endpoints/Endpoints";
+
 import AdminProduct from "./AdminProduct";
-import products from "../constants/MockData";
 
 const AdminScreen = (props) => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    getAllProductsAdmin().then((response) => {
+      setProducts(response);
+    });
+  }, []);
+
   const Item = ({ id, title, image, likes }) => (
     <View>
       <AdminProduct id={id} title={title} image={image} likes={likes} />

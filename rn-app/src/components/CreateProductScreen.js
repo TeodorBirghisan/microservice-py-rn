@@ -7,17 +7,13 @@ import { postProductAdmin, updateProductAdmin } from "../endpoints/Endpoints";
 const CreateProductScreen = (props) => {
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
+  // const isEdit = props.route.params.isEdit;
 
   const handleProductOperation = async (title, image) => {
     const body = {
       title: title,
       image: image,
     };
-
-    if (props.isEdit === true) {
-      updateProductAdmin(body);
-    }
-
     postProductAdmin(body);
   };
 

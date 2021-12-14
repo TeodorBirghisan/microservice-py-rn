@@ -19,7 +19,7 @@ async function getAllProductsAdmin() {
   try {
     let response = await fetch(apiGetProductsAdmin);
     let json = await response.json();
-    return json.data;
+    return json;
   } catch (error) {
     console.log(error);
   }
