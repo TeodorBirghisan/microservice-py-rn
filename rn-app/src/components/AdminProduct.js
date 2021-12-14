@@ -6,7 +6,7 @@ const AdminProduct = (props) => {
   return (
     <View style={styles.container}>
       <Text>{props.id}</Text>
-      <Image source={{ uri: props.image }} />
+      <Image style={styles.image} source={{ uri: props.image }} />
       <Text>{props.title}</Text>
       <Text>{props.likes}</Text>
       <View style={styles.buttonContainer}>

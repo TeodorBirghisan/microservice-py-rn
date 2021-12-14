@@ -30,11 +30,13 @@ const AdminScreen = (props) => {
         <Text>Likes</Text>
         <Text>Action (Delete, Update)</Text>
       </View>
-      <FlatList
-        data={products}
-        renderItem={renderItem}
-        keyExtractor={(item) => item.id.toString()}
-      />
+      <View>
+        <FlatList
+          data={products}
+          renderItem={renderItem}
+          keyExtractor={(item) => item.id.toString()}
+        />
+      </View>
     </View>
   );
 };
