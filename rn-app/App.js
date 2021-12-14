@@ -10,7 +10,11 @@ export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator>
-        <Stack.Screen name="BottomNav" component={BottomNav} />
+        <Stack.Screen
+          name="BottomNav"
+          component={BottomNav}
+          options={{ headerShown: false, title: 'Main App'}}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
