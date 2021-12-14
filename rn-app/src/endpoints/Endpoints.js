@@ -1,5 +1,5 @@
-const HOST_ADMIN = "";
-const HOST_MAIN = "";
+const HOST_ADMIN = "http://localhost:8000";
+const HOST_MAIN = "http://localhost:8001";
 
 const apiGetProductsAdmin = `${HOST_ADMIN}/api/products`;
 const apiPostProductsAdmin = `${HOST_ADMIN}/api/products`;
@@ -11,7 +11,7 @@ const apiDeleteOneProductAdmin = (productId) =>
   `${HOST_ADMIN}/api/products/${productId}`;
 const apiGetRandomUser = `${HOST_ADMIN}/api/user`;
 
-const apiGetProductMain = `${HOST_MAIN}/api/products/${productId}`;
+const apiGetProductMain = `${HOST_MAIN}/api/products`;
 const apiPostLikeMain = (productId) =>
   `${HOST_ADMIN}/api/products/${productId}/like`;
 
@@ -112,3 +112,13 @@ async function postLikeProductMain(params, productId) {
     console.log(error);
   }
 }
+
+export {
+  getAllProductsAdmin,
+  getOneProductAdmin,
+  postProductAdmin,
+  updateProductAdmin,
+  deleteProductAdmin,
+  postLikeProductMain,
+  getOneProductMain,
+};

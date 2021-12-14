@@ -14,7 +14,7 @@ const BottomNav = (props) => {
     <Tab.Navigator>
       <Tab.Screen name="Admin" component={AdminScreen} />
       <Tab.Screen name="Main" component={Main} />
-      <Tab.Screen name="Pr" component={ProductScreen} />
+      <Tab.Screen name="Add" component={ProductScreen} />
     </Tab.Navigator>
   );
 };
