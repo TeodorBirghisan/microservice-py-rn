@@ -1,12 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, Button, View } from "react-native";
+import { Input } from "react-native-elements";
 
 const CreateProductScreen = (props) => {
   return (
     <View>
-      <Text>Title input field</Text>
-      <Text>Image input field</Text>
-      <Button title="Save Button"/>
+      <Input placeholder='Title for product' />
+      <Input placeholder='Image for product' />
+      <Button title="Save Product"/>
     </View>
   );
 };
