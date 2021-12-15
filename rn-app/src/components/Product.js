@@ -14,9 +14,9 @@ const Product = (props) => {
             uri: props.image,
           }}
         />
-        <View>
+        <View style={styles.container}>
           <Button title={"Like"} />
-          <Text>Likes: {props.likes}</Text>
+          <Text style={styles.textStyle}>Likes: {props.likes}</Text>
         </View>
       </Card>
     </View>
@@ -24,10 +24,18 @@ const Product = (props) => {
 };
 
 const styles = StyleSheet.create({
+  container: {
+    display: "flex",
+    justifyContent: "space-around",
+    flexDirection: "row",
+  },
   tinyLogo: {
     width: 200,
     height: 200,
   },
+  textStyle: {
+    fontSize: 20,
+  }
 });
 
 export default Product;
