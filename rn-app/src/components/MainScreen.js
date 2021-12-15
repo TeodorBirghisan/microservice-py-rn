@@ -1,11 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { View, FlatList } from "react-native";
 
+import { getAllProductsMain } from "../endpoints/Endpoints";
+
 import Product from "./Product";
 
-import products from "../constants/MockData";
-
 const Main = (props) => {
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    getAllProductsMain().then((response) => {
+      setProducts(response);
+    });
+  }, []);
+
   const Item = ({ id, title, image, likes }) => (
     <View>
       <Product id={id} title={title} image={image} likes={likes} />

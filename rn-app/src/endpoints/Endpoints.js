@@ -86,11 +86,11 @@ async function deleteProductAdmin(params, productId) {
   }
 }
 
-async function getOneProductMain(productId) {
+async function getAllProductsMain() {
   try {
-    let response = await fetch(apiGetProductMain(productId));
+    let response = await fetch(apiGetProductMain);
     let json = await response.json();
-    return json.data;
+    return json;
   } catch (error) {
     console.log(error);
   }
@@ -120,5 +120,5 @@ export {
   updateProductAdmin,
   deleteProductAdmin,
   postLikeProductMain,
-  getOneProductMain,
+  getAllProductsMain,
 };
