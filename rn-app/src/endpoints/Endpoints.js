@@ -13,7 +13,7 @@ const apiGetRandomUser = `${HOST_ADMIN}/api/user`;
 
 const apiGetProductMain = `${HOST_MAIN}/api/products`;
 const apiPostLikeMain = (productId) =>
-  `${HOST_ADMIN}/api/products/${productId}/like`;
+  `${HOST_MAIN}/api/products/${productId}/like`;
 
 async function getAllProductsAdmin() {
   try {
@@ -36,7 +36,8 @@ async function postProductAdmin(params) {
     });
 
     let responseJson = await response.json();
-    return responseJson;
+    console.log(responseJson);
+
   } catch (error) {
     console.log(error);
   }
@@ -61,6 +62,9 @@ async function updateProductAdmin(params, productId) {
       },
       body: JSON.stringify(params),
     });
+
+    let responseJson = await response.json();
+    console.log(responseJson);
   } catch (error) {
     console.log(error);
   }
@@ -72,8 +76,10 @@ async function deleteProductAdmin(productId) {
       method: "DELETE",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
-      }
+      },
     });
+    let responseJson = await response.json();
+    console.log(responseJson);
   } catch (error) {
     console.log(error);
   }
@@ -89,18 +95,18 @@ async function getAllProductsMain() {
   }
 }
 
-async function postLikeProductMain(params, productId) {
+async function postLikeProductMain(productId) {
   try {
     let response = await fetch(apiPostLikeMain(productId), {
       method: "POST",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
       },
-      body: JSON.stringify(params),
     });
 
     let responseJson = await response.json();
-    return responseJson;
+    console.log(responseJson);
+
   } catch (error) {
     console.log(error);
   }
