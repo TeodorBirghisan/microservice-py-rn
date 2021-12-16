@@ -69,18 +69,14 @@ async function updateProductAdmin(params, productId) {
   }
 }
 
-async function deleteProductAdmin(params, productId) {
+async function deleteProductAdmin(productId) {
   try {
     let response = await fetch(apiDeleteOneProductAdmin(productId), {
       method: "DELETE",
       headers: {
         "Content-type": "application/json; charset=UTF-8",
-      },
-      body: JSON.stringify(params),
+      }
     });
-
-    let responseJson = await response.json();
-    return responseJson;
   } catch (error) {
     console.log(error);
   }

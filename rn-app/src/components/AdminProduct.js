@@ -3,8 +3,15 @@ import { useNavigation } from "@react-navigation/core";
 import { StyleSheet, View, Text } from "react-native";
 import { Button, Image } from "react-native-elements";
 
+import { deleteProductAdmin } from "../endpoints/Endpoints";
+
 const AdminProduct = (props) => {
   const navigation = useNavigation();
+
+  const deleteProduct = async (productId) => {
+    await deleteProductAdmin(productId)
+  }
+
   return (
     <View style={styles.container}>
       <Text>{props.id}</Text>
@@ -16,7 +23,7 @@ const AdminProduct = (props) => {
           title={"Edit"}
           onPress={() => navigation.navigate("Add", { isEdit: true })}
         />
-        <Button title={"Delete"} />
+        <Button title={"Delete"} onPress={() => deleteProduct(props.id)}/>
       </View>
     </View>
   );
