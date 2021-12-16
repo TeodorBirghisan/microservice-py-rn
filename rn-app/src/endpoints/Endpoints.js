@@ -61,9 +61,6 @@ async function updateProductAdmin(params, productId) {
       },
       body: JSON.stringify(params),
     });
-
-    let responseJson = await response.json();
-    return responseJson;
   } catch (error) {
     console.log(error);
   }

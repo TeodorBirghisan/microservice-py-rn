@@ -21,7 +21,7 @@ const AdminProduct = (props) => {
       <View style={styles.buttonContainer}>
         <Button
           title={"Edit"}
-          onPress={() => navigation.navigate("Add", { isEdit: true })}
+          onPress={() => navigation.navigate("Add", { isEdit: true, productId: props.id, image: props.image })}
         />
         <Button title={"Delete"} onPress={() => deleteProduct(props.id)}/>
       </View>
