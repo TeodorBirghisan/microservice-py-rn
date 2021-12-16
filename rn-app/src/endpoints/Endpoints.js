@@ -47,7 +47,7 @@ async function getOneProductAdmin(productId) {
   try {
     let response = await fetch(apiGetOneProductAdmin(productId));
     let json = await response.json();
-    return json.data;
+    return json;
   } catch (error) {
     console.log(error);
   }

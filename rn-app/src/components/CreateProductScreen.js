@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, Button, View } from "react-native";
 import { Input } from "react-native-elements";
 
-import { postProductAdmin, updateProductAdmin } from "../endpoints/Endpoints";
+import {
+  postProductAdmin,
+  updateProductAdmin,
+  getOneProductAdmin,
+} from "../endpoints/Endpoints";
 
 const CreateProductScreen = (props) => {
   const [title, setTitle] = useState("");
@@ -57,6 +61,13 @@ const CreateProductScreen = (props) => {
       </View>
     );
   } else if (isEdit) {
+    useEffect(() => {
+      getOneProductAdmin(props.route.params.productId).then((res) => {
+        setImage(res.image);
+        setTitle(res.title);
+      });
+    }, [])
+  
     return (
       <View>
         <Input
