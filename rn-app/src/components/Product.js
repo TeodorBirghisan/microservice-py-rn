@@ -2,7 +2,11 @@ import React, { useState, useEffect } from "react";
 import { StyleSheet, View, Text, Image } from "react-native";
 import { Button, Card } from "react-native-elements";
 
+import { postLikeProductMain } from "../endpoints/Endpoints";
+
 const Product = (props) => {
+  const likeProduct = async (productId) => {await postLikeProductMain(productId)};
+
   return (
     <View>
       <Card>
@@ -15,7 +19,7 @@ const Product = (props) => {
           }}
         />
         <View style={styles.container}>
-          <Button title={"Like"} />
+          <Button title={"Like"} onPress={()=>{likeProduct(props.id)}}/>
           <Text style={styles.textStyle}>Likes: {props.likes}</Text>
         </View>
       </Card>
@@ -35,7 +39,7 @@ const styles = StyleSheet.create({
   },
   textStyle: {
     fontSize: 20,
-  }
+  },
 });
 
 export default Product;
