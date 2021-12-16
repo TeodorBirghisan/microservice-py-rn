@@ -14,7 +14,10 @@ const CreateProductScreen = (props) => {
       title: title,
       image: image,
     };
-    postProductAdmin(body);
+    await postProductAdmin(body).then(() => {
+      setImage("");
+      setTitle("");
+    });
   };
 
   return (

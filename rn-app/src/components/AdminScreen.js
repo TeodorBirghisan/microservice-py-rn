@@ -13,7 +13,7 @@ const AdminScreen = (props) => {
     getAllProductsAdmin().then((response) => {
       setProducts(response);
     });
-  }, []);
+  }, [products]);
 
   const Item = ({ id, title, image, likes }) => (
     <View>
