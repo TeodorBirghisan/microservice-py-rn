@@ -1,7 +1,7 @@
 import pika
 import json
 
-from main import Product, db
+from main_app import Product, db
 
 
 params = pika.URLParameters(
