@@ -11,7 +11,7 @@ in main backend docker container run:
     python manager.py db upgrade
     python manager.py db migrate
 
-in rn-app directory
+in react-native-app directory
 
 npm install
 npm start
