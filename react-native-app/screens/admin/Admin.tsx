@@ -45,12 +45,9 @@ const AdminScreen = () => {
     );
 
     const renderItem = ({ item }) => (
-        products.map(
-            () => {
-                return (<Product id={item.id} image={item.image} title={item.title} likes={item.likes} />)
-            }
-        )
+        <Product id={item.id} image={item.image} title={item.title} likes={item.likes} />
     )
+
     return (
         <View style={styles.container}>
             <View style={styles.titlesContainer}>
