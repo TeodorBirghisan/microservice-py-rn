@@ -27,7 +27,12 @@ const MainScreen = () => {
         setProducts(products.map(
             (p: Product) => {
                 if (p.id === id) {
-                    p.likes++;
+                    if (!p.likes) {
+                        p.likes = 1
+                    }
+                    else {
+                        p.likes++;
+                    }
                 }
 
                 return p;
@@ -47,7 +52,7 @@ const MainScreen = () => {
                     }}
                 />
                 <View style={styles.container}>
-                    <Button title={"Like"} onPress={() => {like(id)}} />
+                    <Button title={"Like"} onPress={() => { like(id) }} />
                     <Text style={styles.textStyle}>Likes: {likes}</Text>
                 </View>
             </Card>
@@ -55,11 +60,7 @@ const MainScreen = () => {
     )
 
     const renderItem = ({ item }) => (
-        products.map(
-            () => {
-                return (<Product id={item.id} image={item.image} title={item.title} likes={item.likes} />)
-            }
-        )
+        <Product id={item.id} image={item.image} title={item.title} likes={item.likes} />
     )
 
     return (
