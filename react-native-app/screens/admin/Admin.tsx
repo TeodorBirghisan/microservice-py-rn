@@ -37,7 +37,7 @@ const AdminScreen = () => {
             <View style={styles.buttonContainer}>
                 <Button
                     title={"Edit"}
-                    onPress={() => navigation.navigate("Add", { isEdit: true, productId: id, image: image })}
+                    onPress={() => navigation.navigate("Edit", {productId: id, image: image })}
                 />
                 <Button title={"Delete"} onPress={() => deleteProduct(id)} />
             </View>
