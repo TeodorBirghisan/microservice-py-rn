@@ -27,17 +27,18 @@ const AdminScreen = () => {
         setProducts(products.filter((p: Product) => p.id !== id));
     }
 
-    const Product = ({ id, title, image, likes }: Product) => (
+    const Product = ({ id, title, image, likes, dislikes }: Product) => (
 
         <View style={styles.productContainer}>
             <Text>{id}</Text>
             <Image style={styles.image} source={{ uri: image }} />
             <Text>{title}</Text>
             <Text>{likes}</Text>
+            <Text>{dislikes}</Text>
             <View style={styles.buttonContainer}>
                 <Button
                     title={"Edit"}
-                    onPress={() => navigation.navigate("Edit", {productId: id, image: image })}
+                    onPress={() => navigation.navigate("Edit", { productId: id, image: image })}
                 />
                 <Button title={"Delete"} onPress={() => deleteProduct(id)} />
             </View>
@@ -45,7 +46,7 @@ const AdminScreen = () => {
     );
 
     const renderItem = ({ item }) => (
-        <Product id={item.id} image={item.image} title={item.title} likes={item.likes} />
+        <Product id={item.id} image={item.image} title={item.title} likes={item.likes} dislikes={item.dislikes} />
     )
 
     return (
@@ -55,6 +56,7 @@ const AdminScreen = () => {
                 <Text>Image</Text>
                 <Text>Title</Text>
                 <Text>Likes</Text>
+                <Text>Dislikes</Text>
                 <Text>Action (Delete, Update)</Text>
             </View>
             <View>

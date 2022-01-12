@@ -40,7 +40,29 @@ const MainScreen = () => {
         ));
     }
 
-    const Product = ({ id, title, image, likes }: Product) => (
+    const dislike = async (id: number) => {
+        await fetch(`http://localhost:8001/api/products/${id}/dislike`, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' }
+        });
+
+        setProducts(products.map(
+            (p: Product) => {
+                if (p.id === id) {
+                    if (!p.dislikes) {
+                        p.dislikes = 1
+                    }
+                    else {
+                        p.dislikes++;
+                    }
+                }
+
+                return p;
+            }
+        ));
+    }
+
+    const Product = ({ id, title, image, likes, dislikes }: Product) => (
         <View>
             <Card>
                 <Card.Title>{title}</Card.Title>
@@ -53,14 +75,15 @@ const MainScreen = () => {
                 />
                 <View style={styles.container}>
                     <Button title={"Like"} onPress={() => { like(id) }} />
-                    <Text style={styles.textStyle}>Likes: {likes}</Text>
+                    <Button title={"Dislike"} onPress={() => { dislike(id) }} />
+                    <Text style={styles.textStyle}>Likes: {likes}      Dislike: {dislikes} </Text>
                 </View>
             </Card>
         </View>
     )
 
     const renderItem = ({ item }) => (
-        <Product id={item.id} image={item.image} title={item.title} likes={item.likes} />
+        <Product id={item.id} image={item.image} title={item.title} likes={item.likes} dislikes={item.dislikes} />
     )
 
     return (
@@ -77,7 +100,6 @@ const MainScreen = () => {
 
 const styles = StyleSheet.create({
     container: {
-        display: "flex",
         justifyContent: "space-around",
         flexDirection: "row",
     },

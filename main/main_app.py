@@ -60,5 +60,24 @@ def like(id):
     })
 
 
+@app.route('/api/products/<int:id>/dislike', methods=['POST'])
+def dislike(id):
+    req = requests.get('http://host.docker.internal:8000/api/user')
+    json = req.json()
+
+    try:
+        productUser = ProductUser(user_id=json['id'], product_id=id)
+        db.session.add(productUser)
+        db.session.commit()
+
+        publish('product_disliked', id)
+    except:
+        abort(400, 'You already disliked this product')
+
+    return jsonify({
+        'message': 'success'
+    })
+
+
 if __name__ == '__main__':
     app.run(debug=True, host="0.0.0.0")

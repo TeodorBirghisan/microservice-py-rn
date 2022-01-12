@@ -10,7 +10,7 @@ POST http://localhost:8000/api/products
 Content-Type: application/json
 
 {
-    "title": "title",
+    "title": "FINAL TEST",
     "image": "image"
 }
 
@@ -49,4 +49,7 @@ Content-Type: application/json
 GET http://localhost:8001/api/products
 
 ###
-POST http://localhost:8001/api/products/1/like
+POST http://localhost:8001/api/products/19/like
+
+###
+POST http://localhost:8001/api/products/19/dislike

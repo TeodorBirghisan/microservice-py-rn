@@ -19,13 +19,23 @@ channel.queue_declare(queue='admin')
 
 
 def callback(ch, method, properties, body):
-    print('Recieved in admin')
-    data = json.loads(body)
-    print(data)
-    product = Product.objects.get(id=data)
-    product.likes = product.likes + 1
-    product.save()
-    print('product likes increased!')
+    if properties.content_type == 'product_liked':
+        print('Recieved in admin')
+        data = json.loads(body)
+        print(data)
+        product = Product.objects.get(id=data)
+        product.likes = product.likes + 1
+        product.save()
+        print('product likes increased!')
+
+    elif properties.content_type == 'product_disliked':
+        print('Recieved in admin')
+        data = json.loads(body)
+        print(data)
+        product = Product.objects.get(id=data)
+        product.dislikes = product.dislikes + 1
+        product.save()
+        print('product dislikes increased!')
 
 
 channel.basic_consume(
