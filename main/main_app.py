@@ -34,6 +34,7 @@ class ProductUser(db.Model):
     product_id = db.Column('product_id', db.Integer)
     UniqueConstraint('user_id', 'product_id', name='user_product_unique')
 
+
 @app.route('/api/products')
 def index():
     return jsonify(Product.query.all())
@@ -45,7 +46,7 @@ def like(id):
     json = req.json()
 
     try:
-        #TODO: if there is already one with this user id and product id throw error
+        # TODO: if there is already one with this user id and product id throw error
         productUser = ProductUser(user_id=json['id'], product_id=id)
         db.session.add(productUser)
         db.session.commit()
