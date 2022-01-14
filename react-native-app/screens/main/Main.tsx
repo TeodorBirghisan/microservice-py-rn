@@ -103,6 +103,7 @@ const styles = StyleSheet.create({
         display: "flex",
         justifyContent: "space-around",
         flexDirection: "row",
+        alignItems: "center",
     },
     tinyLogo: {
         width: 300,
