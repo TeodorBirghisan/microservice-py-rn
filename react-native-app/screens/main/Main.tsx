@@ -100,10 +100,13 @@ const MainScreen = () => {
 
 const styles = StyleSheet.create({
     container: {
+        display: "flex",
         justifyContent: "space-around",
         flexDirection: "row",
+        alignItems: "center",
     },
     tinyLogo: {
+        alignSelf:"center",
         width: 200,
         height: 200,
     },
